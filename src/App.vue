@@ -25,12 +25,6 @@
 				<button class="right-floated" @click="invalidRequest">Clear data and make ajax request</button>
 			</div>
 		</div>
-		<div class="url-submit">
-			<div>
-			</div>
-			<div>
-			</div>
-		</div>
   </div>
 </template>
 
