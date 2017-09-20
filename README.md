@@ -1,18 +1,6 @@
-# vuex-async
+`npm install` then `npm run`.
 
-> A Vue.js project
+Check out the code for what's going on. I'll add more documentation, tests and maybe make this into a plugin in the future. Just a simple example for now.
 
-## Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-```
-
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+Read a little more about this here:
+https://medium.com/@lachlanmiller_52885/a-pattern-to-handle-ajax-requests-in-vuex-2d69bc2f8984
