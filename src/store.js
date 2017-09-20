@@ -5,23 +5,19 @@ import * as types from './mutation-types'
 
 Vue.use(Vuex)
 
-const mutationTypes = {
-	SUCCESS: 'GET_INFO_SUCCESS',
-	FAILURE: 'GET_INFO_FAILURE',
-	PENDING: 'GET_INFO_PENDING'
-}
-
 const state = {
-	info: {},
 }
 
 const mutations = {
-	[types.GET_INFO_ASYNC.SUCCESS] (state, info) {
-		Vue.set(state, [types.GET_INFO_ASYNC.stateKey], info)
-	},
-	
-	[types.GET_INFO_ASYNC.PENDING] (state, value) {
-		Vue.set(state, types.GET_INFO_ASYNC.loadingKey, value)
+	[types.GET_INFO_ASYNC.BASE] (state, payload) {
+		switch (payload.type) {
+			case types.GET_INFO_ASYNC.PENDING:
+				return Vue.set(state, types.GET_INFO_ASYNC.loadingKey, payload.value)
+			case types.GET_INFO_ASYNC.SUCCESS:
+				return Vue.set(state, types.GET_INFO_ASYNC.stateKey, payload.value)
+			case types.GET_INFO_ASYNC.FAILURE:
+				return Vue.set(state, types.GET_INFO_ASYNC.errorCode, payload.value)
+		}
 	}
 }
 
@@ -33,10 +29,10 @@ const actions = {
 		})
 	},
 
-	getAllPosts(store) {
+	getAsyncFailure(store) {
 		doAsync(store, { 
-			url: 'https://jsonplaceholder.typicode.com/posts/', 
-			mutationTypes: types.GET_ALL_POSTS 
+			url: 'https://jsonplaceholder.typicode.coooooooooom/posts/', 
+			mutationTypes: types.GET_INFO_ASYNC_FAILURE 
 		})
 	}
 }

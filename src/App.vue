@@ -1,18 +1,31 @@
 <template>
   <div id="app">
 		<p>
-			Pending: {{ $store.state.getInfoPending }}
+			Pending: {{ $store.state.getInfoAsyncPending }}
 		</p>
 		<p>
-			{{ $store.state.getInfoData }}
+			Error: {{ $store.state.getInfoAsyncErrorCode }}
+		<p>
+			Data: {{ $store.state.getInfoAsyncData }}
 		</p>
+		<button @click="successfulRequest">Make valid ajax request</button>
+		<button @click="failureRequest">Make invalid ajax request</button>
   </div>
 </template>
 
 <script>
 export default {
 	created () {
-		this.$store.dispatch('getAsync')
+	},
+
+	methods: {
+		successfulRequest () {
+			this.$store.dispatch('getAsync')
+		},
+
+		failureRequest () {
+			this.$store.dispatch('getAsyncFailure')
+		}
 	}
 }
 </script>
