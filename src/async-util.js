@@ -10,10 +10,11 @@ const doAsync = (store, { url, mutationTypes, stateKey }) => {
 				store.commit(mutationTypes.BASE, { type: mutationTypes.SUCCESS, value: response.data})
 			})
 			.catch(error => {
+				console.log('e', error)
 				store.commit(mutationTypes.BASE, { type: mutationTypes.PENDING, value: false })
 				store.commit(mutationTypes.BASE, { type: mutationTypes.FAILURE, value: error.response.status })
 			})
-	}, 100)
+	}, 1000)
 }
 
 export default doAsync
