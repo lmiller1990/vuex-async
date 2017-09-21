@@ -1,8 +1,9 @@
-`npm install` then `npm run`.
+A few util functions and a demo of how to handle async calls in Vuex.
 
-Check out the code for what's going on. I'll add more documentation, tests and maybe make this into a plugin in the future. Just a simple example for now.
+Detailed explanation:
+https://medium.com/@lachlanmiller_52885/reducing-vuex-boilerplate-for-ajax-calls-1cd4a74cef26
 
-See `store.js` and `mutation-types.js` for some comments explaining how stuff works.
+`npm install` then `npm run dev` to try it locally.
 
-Read a little more about this here:
-https://medium.com/@lachlanmiller_52885/a-pattern-to-handle-ajax-requests-in-vuex-2d69bc2f8984
+Check out the article for motivation/explanation, or the code for some comments. 
+I'll add more documentation, tests and maybe make this into a library in the future. Just a simple example for now.
