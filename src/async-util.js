@@ -12,7 +12,6 @@ const doAsync = (store, { url, mutationTypes, callback }) => {
         data = callback(response)
       }
 
-			console.log(data)
       store.commit(mutationTypes.BASE, { type: mutationTypes.SUCCESS, data, statusCode: response.status })
       store.commit(mutationTypes.BASE, { type: mutationTypes.PENDING, value: false})
     })
