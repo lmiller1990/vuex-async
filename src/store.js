@@ -42,6 +42,7 @@ Object.keys(types).forEach(type => {
         return Vue.set(state, types[type].loadingKey, payload.value)
 
       case types[type].SUCCESS:
+				console.log(payload)
         Vue.set(state, types[type].statusCode, payload.statusCode)
         return Vue.set(state, types[type].stateKey, payload.data)
 
@@ -52,7 +53,7 @@ Object.keys(types).forEach(type => {
 })
 
 const getTitleOnly = (response) => {
-  return response.title
+  return response.data.title
 }
 
 const actions = {
