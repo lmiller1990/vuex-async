@@ -52,7 +52,7 @@ Object.keys(types).forEach(type => {
 
 const actions = {
   getAsync(store, url) {
-    doAsync(store, { 
+    return doAsync(store, { 
       url,
       mutationTypes: types.GET_INFO_ASYNC 
     })
