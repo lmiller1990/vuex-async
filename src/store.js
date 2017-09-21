@@ -42,10 +42,11 @@ Object.keys(types).forEach(type => {
         return Vue.set(state, types[type].loadingKey, payload.value)
 
       case types[type].SUCCESS:
-        return Vue.set(state, types[type].stateKey, payload.value)
+        Vue.set(state, types[type].stateKey, payload.value)
+        return Vue.set(state, types[type].statusCode, payload.statusCode)
 
       case types[type].FAILURE:
-        return Vue.set(state, types[type].errorCode, payload.value)
+        return Vue.set(state, types[type].statusCode, payload.value)
     }
   }
 })

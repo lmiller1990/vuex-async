@@ -8,7 +8,7 @@
         Data: {{ $store.state.getInfoAsyncData }}
       </p>
       <p>
-        Error Code: {{ $store.state.getInfoAsyncErrorCode }}
+        Status Code: {{ $store.state.getInfoAsyncStatusCode }}
       </p>
 
 
@@ -51,7 +51,7 @@ export default {
 
     invalidRequest () {
       // clear the state
-      this.$store.commit(types.GET_INFO_ASYNC.BASE, { type: types.GET_INFO_ASYNC.SUCCESS, value: {} })
+      this.$store.commit(types.GET_INFO_ASYNC.BASE, { type: types.GET_INFO_ASYNC.SUCCESS, value: null, statusCode: null })
 
       this.$store.dispatch('getAsync', this.urlInvalid)
     }
