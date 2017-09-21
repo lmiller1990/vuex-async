@@ -1,5 +1,7 @@
 A few util functions and a demo of how to handle async calls in Vuex.
 
+Demo: https://lmiller1990.github.io/vuex-async/
+
 Detailed explanation:
 https://medium.com/@lachlanmiller_52885/reducing-vuex-boilerplate-for-ajax-calls-1cd4a74cef26
 
