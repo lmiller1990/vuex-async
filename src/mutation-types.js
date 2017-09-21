@@ -19,8 +19,8 @@ const createAsyncMutation = (type) => ({
   SUCCESS: `${type}_SUCCESS`,
   FAILURE: `${type}_FAILURE`,
   PENDING: `${type}_PENDING`,
-  loadingKey: _.camelCase(`${type}Pending`),
-  errorCode: `${_.camelCase(type)}ErrorCode`,
+  loadingKey: `${_.camelCase(type)}Pending`,
+  statusCode: `${_.camelCase(type)}StatusCode`,
   stateKey: `${_.camelCase(type)}Data`
 })
 

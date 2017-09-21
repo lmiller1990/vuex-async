@@ -42,19 +42,24 @@ Object.keys(types).forEach(type => {
         return Vue.set(state, types[type].loadingKey, payload.value)
 
       case types[type].SUCCESS:
-        return Vue.set(state, types[type].stateKey, payload.value)
+        Vue.set(state, types[type].statusCode, payload.statusCode)
+        return Vue.set(state, types[type].stateKey, payload.data)
 
       case types[type].FAILURE:
-        return Vue.set(state, types[type].errorCode, payload.value)
+        return Vue.set(state, types[type].statusCode , payload.statusCode)
     }
   }
 })
 
+const getTitleOnly = (response) => {
+  return response.title
+}
+
 const actions = {
   getAsync(store, url) {
-    return doAsync(store, { 
-      url,
-      mutationTypes: types.GET_INFO_ASYNC 
+    return doAsync(
+      store, { 
+        url, mutationTypes: types.GET_INFO_ASYNC, callback: getTitleOnly
     })
   }
 }
