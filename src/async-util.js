@@ -1,17 +1,20 @@
 import axios from 'axios'
 
-const doAsync = (store, { url, mutationTypes }) => {
+const doAsync = (store, { url, mutationTypes, callback }) => {
   store.commit(mutationTypes.BASE, { type: mutationTypes.PENDING, value: true })
 
   return axios(url, {})
     .then(response => {
-      store.commit(mutationTypes.BASE, { type: mutationTypes.PENDING, value: false })
-      store.commit(mutationTypes.BASE, { type: mutationTypes.SUCCESS, value: response.data, statusCode: response.status })
+			let data = response
+      if (callback) {
+        data = callback(response)
+      }
+
+      store.commit(mutationTypes.BASE, { type: mutationTypes.SUCCESS, data, statusCode: response.status })
     })
     .catch(error => {
-      console.log('e', error)
       store.commit(mutationTypes.BASE, { type: mutationTypes.PENDING, value: false })
-      store.commit(mutationTypes.BASE, { type: mutationTypes.FAILURE, value: error.response.status
+      store.commit(mutationTypes.BASE, { type: mutationTypes.FAILURE, statusCode: error.response.status
       })
     })
 }

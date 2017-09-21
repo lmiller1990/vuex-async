@@ -46,7 +46,6 @@ export default {
       this.$store.commit(types.GET_INFO_ASYNC.BASE, { type: types.GET_INFO_ASYNC.FAILURE, value: null })
 
       this.$store.dispatch('getAsync', this.urlCorrect)
-        .then(() => console.log('ok'))
     },
 
     invalidRequest () {
