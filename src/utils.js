@@ -1,11 +1,29 @@
+import Vue from 'vue'
 import axios from 'axios'
 
-const doAsync = (store, url, mutationTypes, callback) => {
+export const registerMutations = (mutations, types) => {
+	Object.keys(types).forEach(type => {
+		mutations[types[type].BASE] = (state, payload) => {
+			switch (payload.type) {
+				case types[type].PENDING:
+					return Vue.set(state, types[type].loadingKey, payload.value)
+
+				case types[type].SUCCESS:
+					Vue.set(state, types[type].statusCode, payload.statusCode)
+					return Vue.set(state, types[type].stateKey, payload.data)
+
+				case types[type].FAILURE:
+					return Vue.set(state, types[type].statusCode , payload.statusCode)
+			}
+		}
+	})
+}
+
+export const fetchAsync = (store, url, mutationTypes, callback) => {
   store.commit(mutationTypes.BASE, { type: mutationTypes.PENDING, value: true })
 
   return axios(url, {})
     .then(response => {
-			console.log(response)
 			let data = response
 			
       if (callback) {
@@ -21,4 +39,3 @@ const doAsync = (store, url, mutationTypes, callback) => {
       })
     })
 }
-export default doAsync

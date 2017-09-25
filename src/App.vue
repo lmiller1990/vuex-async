@@ -39,6 +39,10 @@ export default {
     }
   },
 
+	created () {
+		// thisb.$store.dispatch('test')
+	},
+
   methods: {
     successfulRequest () {
       // clear the state
